@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>DndUpload Demo</title>
+	<meta name="generator" content="BBEdit 9.6" />
+	<script src="jquery-1.7.1.js"></script>
+	<script src="jquery.dndupload.js"></script>
+	<style>
+		#dragZone{
+			width:400px;
+			height:400px;
+			border:1px dashed red;
+			background: white;
+		}
+		#dragZone.dnd-enter{
+			border:1px dashed green;
+		}
+	</style>
+</head>
+<body>
+<div id="dragZone">Drag Files Here.</div>
+<script>
+	$("#dragZone").dndupload({
+		params:{
+            param1 : 'value1'
+        },
+        url:'/api/upload',
+        maxfiles:100,
+        maxfilesize:50*1024*1024
+    }).bind("over.dndupload", function(event){
+         $(this).addClass("dnd-enter");
+    }).bind("out.dndupload", function(event){
+	   $(this).removeClass("dnd-enter");
+	}).bind("done.dndupload", function(event, data){
+	   //show result
+	   console.info(data.result);
+	   $(this).removeClass("dnd-enter");
+	}).bind("start.dndupload", function(event, data){
+	   //show file list
+	   console.info(data.files);
+	}).bind("uploadcancel.dndupload", function(event, data){
+	   //show current file
+	   console.info(data.file);
+	}).bind("uploadstart.dndupload", function(event, data){
+	   //show current file
+	   console.info(data.file);
+	}).bind("uploadcomplete.dndupload", function(event, data){
+	   //show current file
+	   console.info(data.file);
+	}).bind("uploaderror.dndupload", function(event, data){
+	   //show current file
+	   console.info(data.file);
+	}).bind("uploadprogress.dndupload", function(event, data){
+	   //show current file, current progress
+	   console.info(data.file, data.progress);
+	}).bind("error.dndupload", function(event, data){
+	   //show error
+	   console.info(data.error);
+	});
+</script>
+</body>
+</html>
