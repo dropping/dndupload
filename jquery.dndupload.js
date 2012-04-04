@@ -36,27 +36,6 @@
  *          //show result
  *          console.info(data.result);
  *          $(this).removeClass("dnd-enter");
- *      }).bind("start.dndupload", function(event, data){
- *          //show file list
- *          console.info(data.files);
- *      }).bind("uploadcancel.dndupload", function(event, data){
- *          //show current file
- *          console.info(data.file);
- *      }).bind("uploadstart.dndupload", function(event, data){
- *          //show current file
- *          console.info(data.file);
- *      }).bind("uploadcomplete.dndupload", function(event, data){
- *          //show current file
- *          console.info(data.file);
- *      }).bind("uploaderror.dndupload", function(event, data){
- *          //show current file
- *          console.info(data.file);
- *      }).bind("uploadprogress.dndupload", function(event, data){
- *          //show current file, current progress
- *          console.info(data.file, data.progress);
- *      }).bind("error.dndupload", function(event, data){
- *          //show error
- *          console.info(data.error);
  *      });
  */
 (function ($) {
